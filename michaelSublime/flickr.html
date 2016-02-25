@@ -1,0 +1,68 @@
+<!-- flickr -->
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <script src="js/jquery-1.12.0.min.js" type="text/javascript"></script>
+  <script src="js/jquery.carouFredSel-6.2.1-packed.js" language="javascript" type="text/javascript"></script>
+  <link rel="stylesheet" href="css/carouse.css">
+  <script type="text/javascript" language="javascript">
+    $(function() {
+      // Using custom configuration
+      $('#foo2').carouFredSel({
+        item: 2,
+        auto: false,
+        prev: '#prev2',
+        next: '#next2',
+        pagination: "#pager2",
+        mousewheel: true,
+        swipe: {
+          onMouse: true,
+          onTouch: true
+        },
+        items: {
+          width: 1080,
+          height: '30%',  //  optionally resize item-height
+          visible: {
+            min: 2,
+            max: 6
+          }
+        }
+      });
+    });
+  </script>
+	<title></title>
+</head>
+<body>
+  <div class="container container-fluid">
+    <div id="carousel" class="row">
+        <!--carousel test-->
+        <div class="list_carousel">
+            <ul id="foo2">
+                <li><img id="cats" src="http://i2.cdn.turner.com/cnnnext/dam/assets/150324154025-14-internet-cats-restricted-super-169.jpeg"></li>
+                <li><img id="cats" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Large_Siamese_cat_tosses_a_mouse.jpg"></li>
+                <li><img id="cats" src="http://static.giantbomb.com/uploads/original/3/34821/2577499-cat.jpg"></li>
+                <li><img id="cats" src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"></li>
+                <li>e</li>
+                <li>f</li>
+                <li>g</li>
+                <li>h</li>
+                <li>i</li>
+                <li>j</li>
+                <li>k</li>
+                <li>l</li>
+            </ul>
+            <div class="clearfix"></div>
+            <a id="prev2" class="prev" href="#">&lt;</a>
+            <a id="next2" class="next" href="#">&gt;</a>
+            <div id="pager2" class="pager"></div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
