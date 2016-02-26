@@ -1,0 +1,43 @@
+/**
+* Project: HackReactor.
+* By: Ronny Rosabal
+* Date: 2/25/16
+* Time: 5:58 PM
+* Content: 
+*/
+
+html {
+  width:  100%;
+  height: 100%;
+}
+
+/*this makes the body tag be as tall as a the window*/
+body {
+  width:      100%;
+  min-height: 100%;
+}
+
+#wrapper {
+  width:  90%;
+  margin: 5% auto 0 auto;
+}
+
+#formContainer{
+  text-align: center;
+}
+
+#formContainer form{
+  width : 100%;
+}
+
+#formContainer input{
+  display: block;
+  width: 100%;
+  height : 50%;
+  margin-bottom: 1%;
+}
+
+#pictureContainer{
+  height: 80%;
+  border: 1px solid black;
+}
