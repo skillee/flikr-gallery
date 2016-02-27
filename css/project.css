@@ -69,6 +69,7 @@ body {
 }
 
 #pictureList li {
+  position:         relative;
   margin:           2.7% 1% 1% 2.7%;
   display:          inline-block;
   width:            160px;
@@ -78,4 +79,12 @@ body {
 
 #pictureList li img{
   margin: 5px;
+}
+
+.popup {
+  position:         absolute;
+  bottom:           160px;
+  left:             -80px;
+  padding:          5px;
+  background-color: antiquewhite;
 }

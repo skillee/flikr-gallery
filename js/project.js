@@ -29,6 +29,7 @@ var makePhotoList = function( data ){
       html += '<li><img src="http://farm' + farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '_q.jpg"></li>';
     }
     $( '#pictureList' ).html( html );
+    popup();//most be called in here otherwise mouseenter and mouseleave wont work
   }, 50 );
 };
 
@@ -44,3 +45,15 @@ $( '#search' ).on( 'click', function(){
     success : makePhotoList
   } );
 } );
+
+function popup(){
+  $( 'ul li img' ).mouseenter( function(){
+    $( this ).parent().append( '<div class="popup"><img></div>' );
+    var link = $( this ).attr( 'src' );
+    link = link.slice( 0, -5 ) + 'n.jpg';
+    $( '.popup img' ).attr( 'src', link );
+  } ).mouseleave( function(){
+    $( '.popup' ).remove();
+  } );
+}
+
