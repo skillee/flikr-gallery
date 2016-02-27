@@ -32,10 +32,6 @@ var makePhotoList = function( data ){
   }, 50 );
 };
 
-var ajaxResults = function( callBack ){
-  callBack( data );
-};
-
 $( '#search' ).on( 'click', function(){
   html = '';
   $( '#pictureList' ).empty();
