@@ -1,54 +1,50 @@
 /**
  * Project: HackReactor.
- * By: Ronny Rosabal
+ * By: Ronny, Leland, Michael
  * Date: 2/25/16
  * Time: 6:45 PM
- * Content:
+ * Content: Final Project
  */
 
 
 var windowHeight = $( document ).height();
-var windowWidth = $( document).width();
 var wrapperHeight = windowHeight * .75;
 var key = '51c841d433d9b29285520583ef04342f';
-//var tag;
 var html = '';
-
 
 
 $('#wrapper').css('height', wrapperHeight + 'px');
 
+$('#clear').on('click', function(){
+  $( '#pictureList' ).empty();
+});
 
-var ajaxCall = function( tag ){
-  console.log( tag );
-  var link = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + key + '&tags=' + tag +'&per_page=20&format=json&nojsoncallback=1';
-  $.getJSON( link, function( data ){
-    console.log( data );
-    for(var i = 0; i < data.photos.photo.length; i++){
-      var id = data.photos.photo[i].id;
-      var server = data.photos.photo[i].server;
-      var secret = data.photos.photo[i].secret;
-      var farm = data.photos.photo[i].farm;
-      html += '<li><img src="http://farm' + farm + '.static.flickr.com/' + server + '/'+ id + '_' + secret + '_q.jpg"></li>';
+var makePhotoList = function( data ){
+  setTimeout( function(){
+    for( var i = 0; i < data.photos.photo.length; i++ ) {
+      var id = data.photos.photo[ i ].id;
+      var server = data.photos.photo[ i ].server;
+      var secret = data.photos.photo[ i ].secret;
+      var farm = data.photos.photo[ i ].farm;
+      html += '<li><img src="http://farm' + farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '_q.jpg"></li>';
     }
-  });
-  setTimeout(function(){
-    $('#pictureList').html( html );
-  }, 100);
+    $( '#pictureList' ).html( html );
+  }, 50 );
 };
 
-$('#search').on('click', function(){
-  $('#pictureList' ).html('');
-  var tag = $('#input' ).val();
-  console.log(tag);
-  $('#input' ).val("");
-  ajaxCall( tag );
-});
+var ajaxResults = function( callBack ){
+  callBack( data );
+};
 
-$('#clear').on('click', function(){
-  $('#pictureList' ).html('');
-});
-
-/*$('#search' ).on('click', function(){
-  $
-});*/
+$( '#search' ).on( 'click', function(){
+  html = '';
+  $( '#pictureList' ).empty();
+  var tag = $( '#input' ).val();
+  $( '#input' ).val( '' );
+  $.ajax( {
+    url : 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + key + '&tags=' + tag + '&per_page=20&format=json&nojsoncallback=1',
+    type : 'GET',
+    dataType : 'json',
+    success : makePhotoList
+  } );
+} );
