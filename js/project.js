@@ -11,15 +11,17 @@ var windowHeight = $( document ).height();
 var windowWidth = $( document).width();
 var wrapperHeight = windowHeight * .75;
 var key = '51c841d433d9b29285520583ef04342f';
-var tag;
+//var tag;
 var html = '';
-var link = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + key + '&tags=' + tag +'&per_page=20&format=json&nojsoncallback=1';
+
 
 
 $('#wrapper').css('height', wrapperHeight + 'px');
 
 
-var ajaxCall = function(){
+var ajaxCall = function( tag ){
+  console.log( tag );
+  var link = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + key + '&tags=' + tag +'&per_page=20&format=json&nojsoncallback=1';
   $.getJSON( link, function( data ){
     console.log( data );
     for(var i = 0; i < data.photos.photo.length; i++){
@@ -37,12 +39,16 @@ var ajaxCall = function(){
 
 $('#search').on('click', function(){
   $('#pictureList' ).html('');
-  tag = $('#input' ).val();
+  var tag = $('#input' ).val();
+  console.log(tag);
   $('#input' ).val("");
-  ajaxCall();
+  ajaxCall( tag );
 });
 
 $('#clear').on('click', function(){
   $('#pictureList' ).html('');
 });
 
+/*$('#search' ).on('click', function(){
+  $
+});*/
